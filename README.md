@@ -9,6 +9,7 @@
 
 Cette librairie est totalement opensource, vous pouvez donc l'inclure dans tous vos differents projets sans vous soussiez de la license. De plus, son utilisation est assez simple (nous verrons cela dans les prochaines lignes).
 
+
 ## <h2 id="usage">Utilisation</h2>
 
 Cette mini lib vous fourni une seule fonction qui vous devez utiliser pour tout, notament la fonction eval() qui se trouve dans le fichier d'entete calculator.h
@@ -16,6 +17,8 @@ Cette mini lib vous fourni une seule fonction qui vous devez utiliser pour tout,
 Pour integrer ma librairie dans votre code, vous pouvez la lié comme librairie statique, ou bien comme librairie dynamique (chose facile si vous savez utiliser cmake).
 
 Si vous n'avez pas de connaissance dans cmake c'est pas grave, je vous envoie sur ma [chaine youtube](https://youtube.com/harptutos) où une vidéo vous expliquand les étapes de compilation d'un programme vous est brièvement présenter.
+
+Il est aussi à noter que les cas où vous allez rentrer une expression mal conçu ne sont pas encore gérer, de même que les expressions avec les parenthèses
 
 ### Bonus
 En bonus, j'ai créer une sorte de mini interface pour les tests que vous allez surement retrouver dans le repertoire test de ce dépot. Une fois compiler, son exécution vous permet de tester de manuellement la fonction d'évaluation que je vous fourni.
