@@ -20,6 +20,13 @@ Si vous n'avez pas de connaissance dans cmake c'est pas grave, je vous envoie su
 
 Il est aussi à noter que les cas où vous allez rentrer une expression mal conçu ne sont pas encore gérer, de même que les expressions avec les parenthèses
 
+*compilation
+```sh
+$> mkdir build && cd build
+$> cmake ../
+$> make
+```
+
 ### Bonus
 En bonus, j'ai créer une sorte de mini interface pour les tests que vous allez surement retrouver dans le repertoire test de ce dépot. Une fois compiler, son exécution vous permet de tester de manuellement la fonction d'évaluation que je vous fourni.
 
