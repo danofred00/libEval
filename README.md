@@ -32,7 +32,7 @@ En bonus, j'ai créer une sorte de mini interface pour les tests que vous allez 
 
 ```sh
     $>./test "5+2+1*3" # test
-    $> final result = 10 # output
+    final result = 10 # output
 ```
 
 Sur ce, je vous prie de bienvouloir faire des retours apres vos tests, cela me pertant d'améliorer le fonction de cette librairie.
