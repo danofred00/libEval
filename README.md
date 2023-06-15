@@ -28,11 +28,11 @@ $> make
 ```
 
 ### Bonus
-En bonus, j'ai créer une sorte de mini interface pour les tests que vous allez surement retrouver dans le repertoire test de ce dépot. Une fois compiler, son exécution vous permet de tester de manuellement la fonction d'évaluation que je vous fourni.
+En bonus, j'ai créer une interface en cli que vous allez surement retrouver dans le repertoire cli de ce dépot. Une fois compiler, son exécution vous permettra d'utiliser manuellement la fonction d'évaluation que je vous fourni.
 
 ```sh
-    $>./test "5+2+1*3" # test
-    final result = 10 # output
+    $>./evald "5+2+1*3" # test
+    10 # output
 ```
 
 Sur ce, je vous prie de bienvouloir faire des retours apres vos tests, cela me pertant d'améliorer le fonction de cette librairie.
