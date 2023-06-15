@@ -2,6 +2,8 @@
 #include <cstdlib>
 //#include <iostream>
 #include <sstream>
+#include <exception>
+
 #include "evaluator.h"
 
 const std::vector<Operator> operators {
@@ -66,7 +68,12 @@ std::string eval(std::string & expr)
         return expr;
 
     if(tokens.size() == 1 && tokens[0].first == 0)
-        return expr;
+        if(expr[0] == '-')
+            return expr;
+        else if(expr[0] == '+')
+            return expr.substr(1, expr.size() -1);
+        else throw std::logic_error("Bad expression");
+
     
     if(tokens.size() == 2 && tokens[0].second.op == '-')
     {
@@ -81,19 +88,26 @@ std::string eval(std::string & expr)
     size_t beforePos, afterPos;
 
     sSize = expr.length();
+    // get the position the operator with
+    // the maximum priority
     maxIndex = find_max_op_level(tokens);
     before = prevOp(tokens, maxIndex);
     after = nextOp(tokens, maxIndex);
     pos = tokens[maxIndex].first;
 
+    // get index of operands around the operator
+    // with max priority
     beforePos = (before == maxIndex) ? 0 : tokens[before].first + 1;
     afterPos = (after == maxIndex) ? sSize-1 : tokens[after].first - 1;
 
+    // extract operands
     auto left = expr.substr(beforePos, pos-beforePos);
     auto rigth = expr.substr(pos+1, afterPos-pos);
 
+    // do operation
     auto res = doOperatrion<float>(tokens[maxIndex].second.op, std::atof(left.c_str()), std::atof(rigth.c_str()));
 
+    // return the result as a string
     ss << res;
     ss >> result;
 
