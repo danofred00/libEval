@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "evaluator.h"
+#include "eval/eval.h"
 
 #define DESCRIPTION PROJECT_DESCRIPTION 
 

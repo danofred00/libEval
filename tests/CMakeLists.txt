@@ -1,13 +1,13 @@
 
-
 enable_testing(true)
 
 set(TestFiles 
     test.cpp)
 
 add_executable(test ${TestFiles})
+add_test(NAME testing COMMAND test)
 target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(test ${LIBNAME} )
+target_link_libraries(test ${LIBNAME})
 
 #foreach(testcase ${TestFiles})
 

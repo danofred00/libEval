@@ -9,3 +9,8 @@ add_definitions(-DPROJECT_DESCRIPTION="${PROJECT_DESCRIPTION}")
 add_executable(${CLI_OUTPUT_FILENAME} ${SOURCES})
 target_include_directories(${CLI_OUTPUT_FILENAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(${CLI_OUTPUT_FILENAME} ${LIBNAME})
+
+# install the client
+install(
+    TARGETS ${CLI_OUTPUT_FILENAME}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

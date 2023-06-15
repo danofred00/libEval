@@ -2,7 +2,7 @@
 #include <iostream>
 #include <list>
 #include <assert.h>
-#include "evaluator.h"
+#include "eval/eval.h"
 
 #define ASSERT_EQUAL(x,y) x==y
 

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <exception>
 
-#include "evaluator.h"
+#include "eval/eval.h"
 
 const std::vector<Operator> operators {
     {'+', PRIORITY_DEFAULT},
