@@ -1,9 +1,9 @@
 
 
-#enable_testing(true)
+enable_testing(true)
 
 set(TestFiles 
-    test_1.cpp)
+    test.cpp)
 
 add_executable(test ${TestFiles})
 target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR}/include)
