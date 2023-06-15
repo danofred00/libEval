@@ -30,7 +30,7 @@
     /// @brief This function can eval a string as an arithmetic expression
     /// @param expr expression to evaluate
     /// @return a result as a string 
-    std::string eval(std::string & expr);
+    std::string eval(std::string expr);
 
     template<typename T>
     static T doOperatrion(const char op, const T & a, const T & b);

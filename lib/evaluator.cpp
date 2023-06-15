@@ -45,7 +45,6 @@ static Operator toOp(const char op)
     return Operator();
 }
 
-
 static void removeBadOps(std::string & expr, const std::string & op, const std::string & r)
 {
     auto pos = expr.find(op);
@@ -57,7 +56,7 @@ static void removeBadOps(std::string & expr, const std::string & op, const std::
     }
 }
 
-std::string eval(std::string & expr)
+std::string eval(std::string expr)
 {
     removeBadOps(expr, "+-", "-");
     removeBadOps(expr, "-+", "-");
@@ -74,13 +73,13 @@ std::string eval(std::string & expr)
             return expr.substr(1, expr.size() -1);
         else throw std::logic_error("Bad expression");
 
-    
+    /*
     if(tokens.size() == 2 && tokens[0].second.op == '-')
     {
         auto substr = expr.substr(0, tokens[1].first);
         expr.replace(0, tokens[1].first, "");
         return eval(expr.append(substr));
-    }
+    }*/
     
     std::stringstream ss;
     std::string result;
@@ -101,8 +100,17 @@ std::string eval(std::string & expr)
     afterPos = (after == maxIndex) ? sSize-1 : tokens[after].first - 1;
 
     // extract operands
+    // if the left operand is a negative number, we take 
+    // the sign of negation
+    if(beforePos > 0 && expr[beforePos-1] == '-')
+        beforePos--;
+    
     auto left = expr.substr(beforePos, pos-beforePos);
     auto rigth = expr.substr(pos+1, afterPos-pos);
+
+    // std::cout << "max :" << maxIndex << " - before : " << before << " - after : " << after << std::endl;
+    // std::cout << "pos : " << pos << " beforePos :" << beforePos << " - afterPos : " << afterPos << std::endl;
+    // std::cout << "left :" << left << " - rigth : " << rigth << std::endl;
 
     // do operation
     auto res = doOperatrion<float>(tokens[maxIndex].second.op, std::atof(left.c_str()), std::atof(rigth.c_str()));
@@ -113,9 +121,6 @@ std::string eval(std::string & expr)
 
     auto s = expr.replace(beforePos, afterPos-beforePos+1, result);
 
-    // std::cout << "max :" << maxIndex << " - before : " << before << " - after : " << after << std::endl;
-    // std::cout << "pos : " << pos << " beforePos :" << beforePos << " - afterPos : " << afterPos << std::endl;
-    // std::cout << "left :" << left << " - rigth : " << rigth << std::endl;
     // std::cout << result << " - " << s << std::endl;
 
     return eval(s);
