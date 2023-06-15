@@ -7,7 +7,7 @@ set(TestFiles
 
 add_executable(test ${TestFiles})
 target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(test calc)
+target_link_libraries(test ${LIBNAME} )
 
 #foreach(testcase ${TestFiles})
 

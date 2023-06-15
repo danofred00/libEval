@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "calculator.h"
+#include "evaluator.h"
 
 int main(int argc, char const *argv[])
 {
