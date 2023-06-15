@@ -2,7 +2,7 @@
 #include <cstdlib>
 //#include <iostream>
 #include <sstream>
-#include "calculator.h"
+#include "evaluator.h"
 
 const std::vector<Operator> operators {
     {'+', PRIORITY_DEFAULT},

@@ -5,6 +5,8 @@
     #include <vector>
     #include <string>
 
+    #include "version.h"
+
     typedef enum {
         PRIORITY_DEFAULT=0,
         PRIORITY_MEDIUM,
