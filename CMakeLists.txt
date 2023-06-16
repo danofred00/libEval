@@ -24,9 +24,8 @@ configure_file(
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/lib/eval.cpp)
 
-set(HEADERS
-    ${CMAKE_SOURCE_DIR}/include/eval/eval.h
-    ${CMAKE_SOURCE_DIR}/include/eval/version.h)
+file(GLOB_RECURSE HEADERS 
+     ${CMAKE_SOURCE_DIR}/include/ *.h)
 
 add_library(${LIBNAME} STATIC ${SOURCES} ${HEADERS})
 
@@ -43,4 +42,4 @@ install(
 
 # install headers
 install(FILES ${HEADERS} 
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/eval)

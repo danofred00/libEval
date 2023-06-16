@@ -27,17 +27,6 @@ const std::string usage(const std::string & f = "evald")
     "\t--version     - print the version of this tool \n";
 }
 
-// some utils
-
-bool str_startWith(const std::string & s1, const std::string & s2)
-{
-    auto result = s1.compare(0, s2.length(), s2);
-    if(result == 0)
-        return true;
-    
-    return false;
-}
-
 /**
  * Cli function
 */
@@ -89,7 +78,7 @@ int main(int argc, char const *argv[])
     // update value of secondArg
     secondArg.append(argv[1]);
 
-    if(str_startWith(secondArg, "--"))
+    if(str_start_with(secondArg, "--"))
     {
         if(secondArg.compare("--help") == 0)
             std::cout << usage(outname) << std::endl; 

@@ -1,10 +1,11 @@
 
 #include <cstdlib>
-//#include <iostream>
+#include <iostream>
 #include <sstream>
 #include <exception>
 
-#include "eval/eval.h"
+#include "eval/_eval.h"
+#include "eval/_utils.h"
 
 const std::vector<Operator> operators {
     {'+', PRIORITY_DEFAULT},
@@ -56,10 +57,30 @@ static void removeBadOps(std::string & expr, const std::string & op, const std::
     }
 }
 
+bool check_expression(const std::string & expr)
+{
+    bool isValid = true;
+
+    if(str_count(expr, '(') != str_count(expr, ')'))
+        isValid = false;
+
+    return isValid;
+}
+
 std::string eval(std::string expr)
 {
+    // vars declaration
+    std::stringstream ss;
+    std::string result;
+    int maxIndex, pos, before, after, sSize;
+    size_t beforePos, afterPos;
+
+    // main code
     removeBadOps(expr, "+-", "-");
     removeBadOps(expr, "-+", "-");
+
+    if(! check_expression(expr))
+        throw std::logic_error("Invalid expression");
 
     auto tokens = tokenize(expr);
     
@@ -73,19 +94,18 @@ std::string eval(std::string expr)
             return expr.substr(1, expr.size() -1);
         else throw std::logic_error("Bad expression");
 
-    /*
-    if(tokens.size() == 2 && tokens[0].second.op == '-')
-    {
-        auto substr = expr.substr(0, tokens[1].first);
-        expr.replace(0, tokens[1].first, "");
-        return eval(expr.append(substr));
-    }*/
+    // if string contains parenthesis
+    auto last_opp = str_find_last(expr, '(', 0);
+    if(last_opp > 0) {
+        auto first_clp = str_find_first(expr, ')', last_opp);
+        // the expression between the last parenthesis
+        auto substr = expr.substr(last_opp+1, first_clp-last_opp-1);
+        // evaluate expression and update the result
+        result = eval(substr);
+        return eval(expr.replace(last_opp, first_clp-last_opp+1, result));
+    }
     
-    std::stringstream ss;
-    std::string result;
-    int maxIndex, pos, before, after, sSize;
-    size_t beforePos, afterPos;
-
+    // if there is no parenthesis in the expression
     sSize = expr.length();
     // get the position the operator with
     // the maximum priority
