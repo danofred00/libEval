@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(libCalc LANGUAGES CXX)
+project(libEval LANGUAGES CXX)
 
 set(PROJECT_VERSION 1.0.0)
 set(PROJECT_DESCRIPTION "A tool to evaluate arithmetic expressions.")
