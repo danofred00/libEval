@@ -20,11 +20,11 @@ Si vous n'avez pas de connaissance dans cmake c'est pas grave, je vous envoie su
 
 Il est aussi à noter que les cas où vous allez rentrer une expression mal conçu ne sont pas encore gérer, de même que les expressions avec les parenthèses
 
-- compilation
+- compilation & installation
 ```sh
 $> mkdir build && cd build
 $> cmake ../
-$> make
+$> make install
 ```
 
 ### Bonus
