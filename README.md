@@ -1,5 +1,5 @@
-# Un evalueur pour les expressions arithmetiques [Danofred00](https://github.com/danofred00)
-
+# LibEval
+Un evalueur pour les expressions arithmetiques
 
 ## Somaire
 1. <a href="#intro">Introduction</a>
