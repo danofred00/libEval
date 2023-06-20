@@ -96,7 +96,7 @@ std::string eval(std::string expr)
 
     // if string contains parenthesis
     auto last_opp = str_find_last(expr, '(', 0);
-    if(last_opp > 0) {
+    if(last_opp >= 0) {
         auto first_clp = str_find_first(expr, ')', last_opp);
         // the expression between the last parenthesis
         auto substr = expr.substr(last_opp+1, first_clp-last_opp-1);
