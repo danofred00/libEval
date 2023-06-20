@@ -21,25 +21,7 @@ configure_file(
     ${CMAKE_SOURCE_DIR}/include/eval/version.h # output file
     USE_SOURCE_PERMISSIONS)
 
-set(SOURCES
-    ${CMAKE_SOURCE_DIR}/lib/eval.cpp)
-
-file(GLOB_RECURSE HEADERS 
-     ${CMAKE_SOURCE_DIR}/include/ *.h)
-
-add_library(${LIBNAME} STATIC ${SOURCES} ${HEADERS})
-
-target_include_directories(${LIBNAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
-
+add_subdirectory(lib)
 add_subdirectory(cli)
 add_subdirectory(tests)
 
-# install the client and the lib
-install(
-    TARGETS ${LIBNAME}
-    ARCHIVE
-        DESTINATION ${CMAKE_INSTALL_LIBDIR})
-
-# install headers
-install(FILES ${HEADERS} 
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/eval)
