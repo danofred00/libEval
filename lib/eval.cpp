@@ -1,20 +1,22 @@
 
 #include <cstdlib>
-#include <iostream>
+// #include <iostream>
 #include <sstream>
 #include <exception>
+#include <cmath>
+
 
 #include "eval/_eval.h"
 #include "eval/_utils.h"
 
 const std::vector<Operator> operators {
-    {'+', PRIORITY_DEFAULT},
-    {'-', PRIORITY_DEFAULT},
-    {'%', PRIORITY_MEDIUM},
-    {'*', PRIORITY_MEDIUM},
-    {'/', PRIORITY_MEDIUM},
-    {'(', PRIORITY_MAX},
-    {')', PRIORITY_MAX}
+    {'+', PRIORITY_DEFAULT},    // addition
+    {'-', PRIORITY_DEFAULT},    // substraction
+    {'%', PRIORITY_MEDIUM},     // modulo
+    {'*', PRIORITY_MEDIUM},     // multiplication
+    {'/', PRIORITY_MEDIUM},     // division's operator
+    {'^', PRIORITY_MAX},        // power's operator
+    // {')', PRIORITY_MAX}
 };
 
 static std::vector<Token> tokenize(const std::string & expr)
@@ -193,6 +195,8 @@ static T doOperatrion(const char op, const T & a, const T & b)
         result = a / b;
     else if(op == '%')
         result = (int)a % (int)b;
+    else if(op == '^')
+        result = (T) std::pow((double)a, (double)b);
 
     return result;
 }
