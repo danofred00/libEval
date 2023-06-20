@@ -23,6 +23,9 @@ const std::list<TestCase> tests {
     {"-2/2+1*5", "4"},   // 7
     {"1+1/2", "1.5"},   // 8
     {"5%2", "1"},   // 9
+    {"(15*5+(5-2))", "78"}, // 10
+    {"100-(((((15+5)-4)+5*2)*2)-10)", "58"}, // 11
+    {"(2+2*2-2/2)*(3+3*3-3/3)", "55"},
 };
 
 int main(int argc, char const *argv[])
@@ -33,18 +36,19 @@ int main(int argc, char const *argv[])
     for(const auto & test : tests)
     {
         auto expr { test.expr };
-        std::cout << "+ Running test case " << i << " " << test.expr;
+        std::cout << "\t[+] Running test case " << i << " : eval(\"" << test.expr << "\")";
+        std::cout << std::endl;
         
         try {
 
             auto result = eval(expr);
             if(ASSERT_EQUAL(result, test.expected_output))
-                std::cout << " Pass";
+                std::cout << "\t\tPass";
             else
-                std::cout << " Failed";
+                std::cout << "\t\tFailed";
             std::cout << std::endl;
             
-        } catch(std::exception & e) { std::cout << " Failed" << std::endl; }
+        } catch(std::exception & e) { std::cout << "\t\t Failed" << std::endl; }
 
         i++;
     }
